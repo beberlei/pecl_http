@@ -383,7 +383,7 @@ namespace http {
 }
 
 namespace http\Client {
-    interface HttpClient implements \SplSubject
+    interface HttpClient
     {
         public function createPool(\http\Request $request1 = NULL, \http\Request $request2 = NULL, \http\Request $requestN = NULL);
         public function createDataShare(\http\Request $request1 = NULL, \http\Request $request2 = NULL, \http\Request $requestN = NULL);
@@ -399,7 +399,7 @@ namespace http\Client {
 }
 
 namespace http {
-    class Request extends \http\Object
+    class Request extends \http\Object implements \SplSubject 
     {
         private $observers;
         private $options;
@@ -418,6 +418,16 @@ namespace http {
         private $messageClass;
 
         private function __construct() {
+        }
+        public function getObservers() {
+        }
+        public function notify() {
+        }
+        public function attach(\SplObserver $observer) {
+        }
+        public function detach(\SplObserver $observer) {
+        }
+        public function getProgress() {
         }
         public function getTransferInfo($name = NULL) {
         }
