@@ -402,7 +402,14 @@ namespace http\Client {
         public function setMessageClass($message_class_name);
     }
 
-    function http_client_get_available_drivers();
+    function http_client_get_available_drivers()
+    {
+    }
+
+    class CurlClient implements HttpClient
+    {
+        // implementation missing
+    }
 }
 
 namespace http {
