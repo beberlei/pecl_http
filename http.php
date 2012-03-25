@@ -424,7 +424,7 @@ namespace http\Client {
         }
     }
 
-    class CurlClient implements HttpClient
+    class CurlClient extends http\Object implements HttpClient
     {
         public function __construct($options = null)
         {
