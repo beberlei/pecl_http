@@ -402,13 +402,33 @@ namespace http\Client {
         public function setMessageClass($message_class_name);
     }
 
-    function http_client_get_available_drivers()
+    class Factory
     {
+        static public function setDefaultClient(HttpClient $defaultClient)
+        {
+        }
+
+        /**
+         * Client to be used by all "shortcut" functions such as {@see
+         * http_get} and the likes.
+         *
+         * If none is set with {@see setDefaultClient} a CurlClient will
+         * automatically be created by the factory.
+         */
+        static public function getDefaultClient()
+        {
+        }
+
+        static public function getAvailableDrivers()
+        {
+        }
     }
 
     class CurlClient implements HttpClient
     {
-        public function __construct($options = null);
+        public function __construct($options = null)
+        {
+        }
 
         // implementation missing
     }
