@@ -1,4 +1,4 @@
-
+<?php
 
 namespace http {
 abstract class Object 
