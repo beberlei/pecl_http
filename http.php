@@ -418,10 +418,6 @@ namespace http {
         private $observers;
         private $options;
         private $transferInfo;
-        private $responseMessage;
-        private $responseCode;
-        private $responseStatus;
-        private $requestMessage;
         private $method;
         private $url;
         private $contentType;
