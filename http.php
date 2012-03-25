@@ -408,6 +408,8 @@ namespace http\Client {
 
     class CurlClient implements HttpClient
     {
+        public function __construct($options = null);
+
         // implementation missing
     }
 }
