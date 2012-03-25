@@ -382,28 +382,20 @@ namespace http {
     }
 }
 
-namespace http\Request {
-    class Factory extends \http\Object 
+namespace http\Client {
+    interface HttpClient
     {
-        protected $driver;
-        protected $persistentHandleId;
-        protected $requestClass;
-        protected $requestPoolClass;
-        protected $requestDataShareClass;
-
-        public function __construct($options) {
-        }
-        public function createRequest($url = NULL, $method = NULL, $options = NULL) {
-        }
-        public function createPool(\http\Request $request1 = NULL, \http\Request $request2 = NULL, \http\Request $requestN = NULL) {
-        }
-        public function createDataShare(\http\Request $request1 = NULL, \http\Request $request2 = NULL, \http\Request $requestN = NULL) {
-        }
-        public function getDriver() {
-        }
-        public static function getAvailableDrivers() {
-        }
+        public function createPool(\http\Request $request1 = NULL, \http\Request $request2 = NULL, \http\Request $requestN = NULL);
+        public function createDataShare(\http\Request $request1 = NULL, \http\Request $request2 = NULL, \http\Request $requestN = NULL);
+        public function getDriver();
+        /**
+         * @param \http\Request $request
+         * @return \http\Message
+         */
+        public function send(\http\Request $request);
     }
+
+    function http_client_get_available_drivers();
 }
 
 namespace http {
