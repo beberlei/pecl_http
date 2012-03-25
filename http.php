@@ -305,7 +305,7 @@ namespace http\Message {
         }
         public function addForm(array $fields = NULL, array $files = NULL) {
         }
-        public function addPart(\http\Message $"message") {
+        public function addPart(\http\Message $message) {
         }
         public function etag() {
         }
