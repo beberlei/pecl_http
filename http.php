@@ -398,6 +398,8 @@ namespace http\Client {
         public function clearHistory();
         public function setOptions($options = NULL);
         public function getOptions();
+        public function getMessageClass();
+        public function setMessageClass($message_class_name);
     }
 
     function http_client_get_available_drivers();
@@ -418,7 +420,6 @@ namespace http {
         private $contentType;
         private $requestBody;
         private $queryData;
-        private $messageClass;
 
         private function __construct() {
         }
@@ -487,10 +488,6 @@ namespace http {
         public function addBody(\http\Message\Body $body) {
         }
         public function getRequestMessage() {
-        }
-        public function getMessageClass() {
-        }
-        public function setMessageClass($message_class_name) {
         }
     }
 }
