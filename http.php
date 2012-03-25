@@ -483,18 +483,6 @@ namespace http {
         }
         public function addBody(\http\Message\Body $body) {
         }
-        public function getResponseHeader($header_name = NULL) {
-        }
-        public function getResponseCookies($flags = NULL, $allowed_extras = NULL) {
-        }
-        public function getResponseCode() {
-        }
-        public function getResponseStatus() {
-        }
-        public function getResponseBody() {
-        }
-        public function getResponseMessage() {
-        }
         public function getRequestMessage() {
         }
         public function getHistory() {
