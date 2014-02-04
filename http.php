@@ -382,27 +382,55 @@ namespace http {
     }
 }
 
-namespace http\Request {
-    class Factory extends \http\Object 
+namespace http\Client {
+    interface HttpClient
     {
-        protected $driver;
-        protected $persistentHandleId;
-        protected $requestClass;
-        protected $requestPoolClass;
-        protected $requestDataShareClass;
+        public function createPool(\http\Request $request1 = NULL, \http\Request $request2 = NULL, \http\Request $requestN = NULL);
+        public function createDataShare(\http\Request $request1 = NULL, \http\Request $request2 = NULL, \http\Request $requestN = NULL);
+        public function getDriver();
+        /**
+         * @param \http\Request $request
+         * @return \http\Message
+         */
+        public function send(\http\Request $request);
 
-        public function __construct($options) {
+        public function getHistory();
+        public function clearHistory();
+        public function setOptions($options = NULL);
+        public function getOptions();
+        public function getMessageClass();
+        public function setMessageClass($message_class_name);
+    }
+
+    class Factory
+    {
+        static public function setDefaultClient(HttpClient $defaultClient)
+        {
         }
-        public function createRequest($url = NULL, $method = NULL, $options = NULL) {
+
+        /**
+         * Client to be used by all "shortcut" functions such as {@see
+         * http_get} and the likes.
+         *
+         * If none is set with {@see setDefaultClient} a CurlClient will
+         * automatically be created by the factory.
+         */
+        static public function getDefaultClient()
+        {
         }
-        public function createPool(\http\Request $request1 = NULL, \http\Request $request2 = NULL, \http\Request $requestN = NULL) {
+
+        static public function getAvailableDrivers()
+        {
         }
-        public function createDataShare(\http\Request $request1 = NULL, \http\Request $request2 = NULL, \http\Request $requestN = NULL) {
+    }
+
+    class CurlClient extends http\Object implements HttpClient
+    {
+        public function __construct($options = null)
+        {
         }
-        public function getDriver() {
-        }
-        public static function getAvailableDrivers() {
-        }
+
+        // implementation missing
     }
 }
 
@@ -412,18 +440,11 @@ namespace http {
         private $observers;
         private $options;
         private $transferInfo;
-        private $responseMessage;
-        private $responseCode;
-        private $responseStatus;
-        private $requestMessage;
         private $method;
         private $url;
         private $contentType;
         private $requestBody;
         private $queryData;
-        private $history;
-        public $recordHistory;
-        private $messageClass;
 
         private function __construct() {
         }
@@ -491,29 +512,7 @@ namespace http {
         }
         public function addBody(\http\Message\Body $body) {
         }
-        public function send() {
-        }
-        public function getResponseHeader($header_name = NULL) {
-        }
-        public function getResponseCookies($flags = NULL, $allowed_extras = NULL) {
-        }
-        public function getResponseCode() {
-        }
-        public function getResponseStatus() {
-        }
-        public function getResponseBody() {
-        }
-        public function getResponseMessage() {
-        }
         public function getRequestMessage() {
-        }
-        public function getHistory() {
-        }
-        public function clearHistory() {
-        }
-        public function getMessageClass() {
-        }
-        public function setMessageClass($message_class_name) {
         }
     }
 }
